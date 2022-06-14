@@ -43,7 +43,6 @@ def kaito2():
             Fin=True
             print("正解！！")
             
-
 while True:
     lis=[]
     for i in range(65, 91):
