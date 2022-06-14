@@ -9,7 +9,7 @@ def shutudai():
     quiz=random.choice(list(d.items()))
     ans=kaito(quiz)
     if ans in quiz[1]:
-        print("正解！！！")
+        print("正解！")
     else:
         print("出直してこい")
 
