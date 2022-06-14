@@ -1,26 +1,5 @@
 import random
 import time
-def shutudai1():
-    d={}
-    d["Q1"]="答え1"
-    d["Q2"]="答え2"
-    quiz=random.choice(list(d.items()))
-    ans=kaito(quiz)
-    if quiz[1]==ans:
-        print("正解")
-    else:
-        print("不正解")
-
-def shutudai2():
-    d={}
-    d["Q1"]=["答え1","こたえ1","1"]
-    d["Q2"]=["答え2","こたえ2","2"]
-    quiz=random.choice(list(d.items()))
-    ans=kaito(quiz)
-    if ans in quiz[1]:
-        print("正解")
-    else:
-        print("不正解")
 
 def shutudai():
     d={}
