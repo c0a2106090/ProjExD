@@ -41,8 +41,9 @@ def kaito2():
             break
         if clear==misslen:
             Fin=True
-            print("正解！！")
+            print("正解！")
             
+
 while True:
     lis=[]
     for i in range(65, 91):
@@ -50,6 +51,7 @@ while True:
     alphagame()
     if Fin==True:
         break
+
 end=time.time()
 anstime=round(end-start,1)
 print(f"経過時間:{anstime}秒")
