@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox as tkm
 def Bottonmake(a):
+    global entry
     entry=tk.Entry(root,justify="right",width=10,font=("Times New Roman", 40))
     entry.grid(columnspan=4)
     for i in range(3):
@@ -14,8 +15,9 @@ def Bottonmake(a):
 
 def button_click(event):
     btn=event.widget
-    txt=btn["text"]
-    tkm.showinfo(txt,f"{txt}のボタンがクリックされました")
+    num=btn["text"]
+    #tkm.showinfo(txt,f"{txt}のボタンがクリックされました")
+    entry.insert(tk.END,num)
 
 if __name__ == "__main__":  
     root=tk.Tk()
