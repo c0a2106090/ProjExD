@@ -1,10 +1,12 @@
 import tkinter as tk
 import tkinter.messagebox as tkm
 def Bottonmake(a):
+    entry=tk.Entry(root,justify="right",width=10,font=("Times New Roman", 40))
+    entry.grid(columnspan=4)
     for i in range(3):
         for j in range(3):
             button=tk.Button(root,text=str(a[i][j]),height=2,width=4,font=("Times New Roman",30))
-            button.grid(row=i,column=j)
+            button.grid(row=i+1,column=j)
             button.bind("<1>",button_click)
     button=tk.Button(root,text="0",height=2,width=4,font=("Times New Roman",30))
     button.grid(row=4,column=0)
@@ -17,7 +19,7 @@ def button_click(event):
 
 if __name__ == "__main__":  
     root=tk.Tk()
-    root.geometry("300x500")
+    root.geometry("300x600")
     Bottonname=[[9,8,7],[6,5,4],[3,2,1],[0,"",""]]
     Bottonmake(Bottonname)
 
