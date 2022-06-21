@@ -2,7 +2,7 @@ from pickle import TRUE
 import tkinter as tk
 import tkinter.messagebox as tkm
 import math
-def Bottonmake(a):
+def Buttonmake(a):
     global entry
     entry=tk.Entry(root,justify="right",width=10,font=("Times New Roman", 40))
     entry.grid(columnspan=5)
@@ -52,6 +52,6 @@ def button_click(event): #ボタンクリック時に呼び出される
 if __name__ == "__main__":  
     root=tk.Tk()
     root.geometry("400x500")
-    Bottonname=[["C","TAX","!","^"],[7,8,9,"÷"],[4,5,6,"×"],[1,2,3,"-"],["00",0,"=","+"]] #Cは全消去ボタン
-    Bottonmake(Bottonname)
+    Buttonname=[["C","TAX","!","^"],[7,8,9,"÷"],[4,5,6,"×"],[1,2,3,"-"],["00",0,"=","+"]] #Cは全消去ボタン
+    Buttonmake(Buttonname)
     root.mainloop()
