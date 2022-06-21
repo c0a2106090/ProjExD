@@ -18,6 +18,10 @@ def button_click(event):
     num=btn["text"]
     #tkm.showinfo(txt,f"{txt}のボタンがクリックされました")
     entry.insert(tk.END,num)
+    if num=="=":
+        Formula=entry.get()[:-1]
+        entry.delete(0,tk.END)
+        entry.insert(0,eval(Formula))
 
 if __name__ == "__main__":  
     root=tk.Tk()
