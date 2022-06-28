@@ -17,13 +17,13 @@ def main_proc():
     global cy,cz,key
     x,y=0,0
     if key=="Up":
-        y=-10
+        y=-100
     elif key=="Down":
-        y=10
+        y=100
     elif key=="Left":
-        x=-10
+        x=-100
     elif key=="Right":
-        x=10
+        x=100
     canvas.move("tori",x,y)
     root.after(100,main_proc)
 
@@ -33,13 +33,13 @@ if __name__ == "__main__":
     canvas=tk.Canvas(root,width=1500,height=900,bg="black")
     canvas.place(x=0,y=0)
     canvas.pack()
-
+    
     mass=maze_maker.make_maze(15,9)
     maze_maker.show_maze(canvas,mass)
-    
+
     tori=tk.PhotoImage(file="C:/Users/admin/Downloads/プロジェクト演習/ProjExD2022/ex03/fig/8.png")
-    cx=300
-    cy=400
+    cx=150
+    cy=150
     canvas.create_image(cx,cy,image=tori,tag="tori")
     
     key=""
