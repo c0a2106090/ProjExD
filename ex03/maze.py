@@ -2,8 +2,6 @@ import tkinter as tk
 import tkinter.messagebox as tkm
 import maze_maker
 
-
-
 def key_down(event):
     global key 
     key=event.keysym
@@ -13,7 +11,7 @@ def key_up(event):
     key=""
 
 def main_proc():
-    global mx,my,key
+    global mx,my
     if key=="Up" :
         if mass[my-1][mx]==0:
             my-=1
