@@ -33,7 +33,9 @@ if __name__ == "__main__":
     canvas=tk.Canvas(root,width=1500,height=900,bg="black")
     canvas.place(x=0,y=0)
     canvas.pack()
+
     mass=maze_maker.make_maze(15,9)
+    maze_maker.show_maze(canvas,mass)
     
     tori=tk.PhotoImage(file="C:/Users/admin/Downloads/プロジェクト演習/ProjExD2022/ex03/fig/8.png")
     cx=300
