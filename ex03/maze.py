@@ -16,4 +16,5 @@ if __name__ == "__main__":
     cy=400
     canvas.create_image(cx,cy,image=tori,tag="tori")
     
+    key=""
     tk.mainloop()
