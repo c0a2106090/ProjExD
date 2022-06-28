@@ -10,28 +10,36 @@ def key_up(event):
     global key
     key=""
 
+def gameover():
+    tkm.showinfo("あうと", "GAME OVER")
+    
+
 def main_proc():
-    global mx,my
+    global mx,my,cx,cy
     if key=="Up" :
         if mass[my-1][mx]==0:
             my-=1
         else:
-            root.destroy()
+            gameover()
+            return
     elif key=="Down" :
         if mass[my+1][mx]==0:
             my+=1
         else:
-            root.destroy()
+            gameover()
+            return
     elif key=="Left" :
         if mass[my][mx-1]==0:
             mx-=1
         else:
-            root.destroy()
+            gameover()
+            return
     elif key=="Right" :
         if mass[my][mx+1]==0:
             mx+=1
         else:
-            root.destroy()
+            gameover()
+            return
     x=mx*100+50
     y=my*100+50
     canvas.coords("tori",x,y)
