@@ -1,5 +1,6 @@
 from hashlib import blake2b
 from itertools import cycle
+#from termios import CSIZE
 import tkinter as tk
 import tkinter.messagebox as tkm
 
@@ -10,6 +11,20 @@ def key_down(event):
 def key_up(event):
     global key
     key=""
+
+def main_proc():
+    global cy,cz,key
+    x,y=0,0
+    if key=="Up":
+        y=-10
+    elif key=="Down":
+        y=10
+    elif key=="Left":
+        x=-10
+    elif key=="Right":
+        x=10
+    canvas.move("tori",x,y)
+    root.after(100,main_proc)
 
 if __name__ == "__main__":   
     root=tk.Tk()
@@ -24,7 +39,7 @@ if __name__ == "__main__":
     canvas.create_image(cx,cy,image=tori,tag="tori")
     
     key=""
-
+    main_proc()
     root.bind("<KeyPress>",key_down)
     root.bind("<KeyRelease>",key_up)
     tk.mainloop()
