@@ -14,17 +14,18 @@ def key_up(event):
     key=""
 
 def main_proc():
-    global cy,cz,key
-    x,y=0,0
-    if key=="Up":
-        y=-100
-    elif key=="Down":
-        y=100
-    elif key=="Left":
-        x=-100
-    elif key=="Right":
-        x=100
-    canvas.move("tori",x,y)
+    global mx,my,key
+    if key=="Up" and mass[my-1][mx]==0:
+        my-=1
+    elif key=="Down" and mass[my+1][mx]==0:
+        my+=1
+    elif key=="Left" and mass[my][mx-1]==0:
+        mx-=1
+    elif key=="Right" and mass[my][mx+1]==0:
+        mx+=1
+    x=mx*100+50
+    y=my*100+50
+    canvas.coords("tori",x,y)
     root.after(100,main_proc)
 
 if __name__ == "__main__":   
@@ -38,8 +39,9 @@ if __name__ == "__main__":
     maze_maker.show_maze(canvas,mass)
 
     tori=tk.PhotoImage(file="C:/Users/admin/Downloads/プロジェクト演習/ProjExD2022/ex03/fig/8.png")
-    cx=150
-    cy=150
+    mx,my=1,1
+    cx=100
+    cy=100
     canvas.create_image(cx,cy,image=tori,tag="tori")
     
     key=""
