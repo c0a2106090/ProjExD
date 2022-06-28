@@ -1,8 +1,7 @@
-from hashlib import blake2b
-from itertools import count, cycle
 import tkinter as tk
 import tkinter.messagebox as tkm
 import maze_maker
+
 
 
 def key_down(event):
