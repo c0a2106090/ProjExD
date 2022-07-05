@@ -15,7 +15,13 @@ def main():
     tori_rect=tori_img.get_rect()
     tori_rect.center=900,400
 
-    make_bomb()
+    x=random.randint(10,1590)
+    y=random.randint(10,890)
+    bomb_img=pg.Surface((20,20))
+    pg.draw.circle(bomb_img,(255,0,0),(10,10),10) #第3引数:surfave内の座標
+    bomb_rect=bomb_img.get_rect()
+    bomb_rect.center=x,y
+    bomb_img.set_colorkey((0,0,0))
     vx,vy=1,1
 
 
@@ -43,19 +49,9 @@ def main():
             tori_rect.move_ip(0, -1)
         if presskey[pg.K_DOWN]:
             tori_rect.move_ip(0, 1)
-        
+
         if tori_rect.colliderect(bomb_rect)==True:
             return
-
-def make_bomb():
-    global bomb_rect,bomb_img
-    x=random.randint(10,1590)
-    y=random.randint(10,890)
-    bomb_img=pg.Surface((20,20))
-    pg.draw.circle(bomb_img,(255,0,0),(10,10),10) #第3引数:surfave内の座標
-    bomb_rect=bomb_img.get_rect()
-    bomb_rect.center=x,y
-    bomb_img.set_colorkey((0,0,0))
 
 
 if __name__ == "__main__":
