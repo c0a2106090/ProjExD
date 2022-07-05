@@ -43,8 +43,9 @@ def main():
             tori_rect.move_ip(0, -1)
         if presskey[pg.K_DOWN]:
             tori_rect.move_ip(0, 1)
-
-
+        
+        if tori_rect.colliderect(bomb_rect)==True:
+            return
 
 def make_bomb():
     global bomb_rect,bomb_img
