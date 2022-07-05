@@ -12,6 +12,7 @@ def main():
     tori_img=pg.image.load("C:/Users/admin/Downloads/プロジェクト演習/ProjExD2022/ex03/fig/8.png")
     tori_img=pg.transform.rotozoom(tori_img,0,2.0)
     tori_rect=tori_img.get_rect()
+    tori_rect.center=900,400
 
     while True:
         screen.blit(bg,rect_bg)
@@ -21,17 +22,6 @@ def main():
         for event in pg.event.get():#イベントキューからキーボードやマウスの動きを取得
             if event.type == pg.QUIT:      # 閉じるボタンが押されたら終了
                 return
-
-        presskey=pg.key.get_pressed()
-        if presskey[pg.K_LEFT]:
-            tori_rect.move_ip(-1, 0)
-        if presskey[pg.K_RIGHT]:
-            tori_rect.move_ip(1, 0)
-        if presskey[pg.K_UP]:
-            tori_rect.move_ip(0, -1)
-        if presskey[pg.K_DOWN]:
-            tori_rect.move_ip(0, 1)
-
 
 if __name__ == "__main__":
     pg.init() 
