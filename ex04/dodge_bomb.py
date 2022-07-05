@@ -1,5 +1,6 @@
 import pygame as pg
 import sys
+import random
        
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -14,14 +15,24 @@ def main():
     tori_rect=tori_img.get_rect()
     tori_rect.center=900,400
 
+    x=random.randint(10,1590)
+    y=random.randint(10,890)
+    bomb_img=pg.Surface((20,20))
+    pg.draw.circle(bomb_img,(255,0,0),(10,10),10) #第3引数:surfave内の座標
+    bomb_rect=bomb_img.get_rect()
+    bomb_rect.center=x,y
+    bomb_img.set_colorkey((0,0,0))
+
     while True:
         screen.blit(bg,rect_bg)
         screen.blit(tori_img,tori_rect)
+        screen.blit(bomb_img,(x,y))
         pg.display.update() 
 
         for event in pg.event.get():#イベントキューからキーボードやマウスの動きを取得
             if event.type == pg.QUIT:      # 閉じるボタンが押されたら終了
                 return
+    
 
         presskey=pg.key.get_pressed()
         if presskey[pg.K_LEFT]:
@@ -32,6 +43,7 @@ def main():
             tori_rect.move_ip(0, -1)
         if presskey[pg.K_DOWN]:
             tori_rect.move_ip(0, 1)
+        
 
 
 if __name__ == "__main__":
