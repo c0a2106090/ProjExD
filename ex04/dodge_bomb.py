@@ -23,16 +23,18 @@ def main():
     bomb_rect.center=x,y
     bomb_img.set_colorkey((0,0,0))
 
+
     while True:
         screen.blit(bg,rect_bg)
         screen.blit(tori_img,tori_rect)
-        screen.blit(bomb_img,(x,y))
+        screen.blit(bomb_img,bomb_rect)
         pg.display.update() 
+        vx,vy=1,1
+        bomb_rect.move_ip(vx,vy)
 
         for event in pg.event.get():#イベントキューからキーボードやマウスの動きを取得
             if event.type == pg.QUIT:      # 閉じるボタンが押されたら終了
                 return
-    
 
         presskey=pg.key.get_pressed()
         if presskey[pg.K_LEFT]:
@@ -43,7 +45,6 @@ def main():
             tori_rect.move_ip(0, -1)
         if presskey[pg.K_DOWN]:
             tori_rect.move_ip(0, 1)
-        
 
 
 if __name__ == "__main__":
