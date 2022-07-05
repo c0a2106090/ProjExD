@@ -41,13 +41,13 @@ def main():
                 return
 
         presskey=pg.key.get_pressed()
-        if presskey[pg.K_LEFT]:
+        if presskey[pg.K_LEFT] and tori_rect.left>=0:
             tori_rect.move_ip(-1, 0)
-        if presskey[pg.K_RIGHT]:
+        if presskey[pg.K_RIGHT] and tori_rect.right<=1600:
             tori_rect.move_ip(1, 0)
-        if presskey[pg.K_UP]:
+        if presskey[pg.K_UP] and tori_rect.top>=0:
             tori_rect.move_ip(0, -1)
-        if presskey[pg.K_DOWN]:
+        if presskey[pg.K_DOWN] and tori_rect.bottom<=900:
             tori_rect.move_ip(0, 1)
 
         if tori_rect.colliderect(bomb_rect)==True:
