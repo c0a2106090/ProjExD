@@ -1,3 +1,4 @@
+from weakref import ref
 import pygame as pg
 import sys
 import random
@@ -23,7 +24,8 @@ def main():
     bomb_rect.center=x,y
     bomb_img.set_colorkey((0,0,0))
     vx,vy=1,1
-
+    reflectx=0
+    reflecty=0
 
     while True:
         screen.blit(bg,rect_bg)
@@ -32,9 +34,11 @@ def main():
         pg.display.update() 
         bomb_rect.move_ip(vx,vy)
         if bomb_rect.right>1600 or bomb_rect.left<0:
-            vx*=-1
+            reflectx+=1
+            vx=napier(reflectx)
         if bomb_rect.top<0 or bomb_rect.bottom>900:
-            vy*=-1
+            reflecty+=1
+            vy=napier(reflecty)
 
         for event in pg.event.get():#イベントキューからキーボードやマウスの動きを取得
             if event.type == pg.QUIT:      # 閉じるボタンが押されたら終了
@@ -52,6 +56,14 @@ def main():
 
         if tori_rect.colliderect(bomb_rect)==True:
             return
+
+def napier(x):
+    x-int(x)
+    if x%2==0:
+        y=(1+1/x)**x
+    else:
+        y=-((1+1/x)**x)
+    return y
 
 
 if __name__ == "__main__":
