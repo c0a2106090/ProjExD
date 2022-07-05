@@ -23,6 +23,17 @@ def main():
             if event.type == pg.QUIT:      # 閉じるボタンが押されたら終了
                 return
 
+        presskey=pg.key.get_pressed()
+        if presskey[pg.K_LEFT]:
+            tori_rect.move_ip(-1, 0)
+        if presskey[pg.K_RIGHT]:
+            tori_rect.move_ip(1, 0)
+        if presskey[pg.K_UP]:
+            tori_rect.move_ip(0, -1)
+        if presskey[pg.K_DOWN]:
+            tori_rect.move_ip(0, 1)
+
+
 if __name__ == "__main__":
     pg.init() 
     main()
