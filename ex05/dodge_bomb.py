@@ -14,7 +14,6 @@ class Screen:
         self.sfc.blit(self.bgi_sfc, self.bgi_rct)
 
 class Bird:
-#    key_delta=
     def __init__(self,file,bairitsu,xy): # xy:初期座標
         self.sfc=pg.image.load(file)
         self.sfc=pg.transform.rotozoom(self.sfc, 0, float(bairitsu))
