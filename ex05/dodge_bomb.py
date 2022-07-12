@@ -83,9 +83,11 @@ def main():
         screen.blit()
         bird.update(screen)
         bomb.update(screen)
-        for event in pg.event.get():
-            if event.type == pg.QUIT: return
-        if bird.rct.colliderect(bomb.rct): return 
+        for event in pg.event.get(): # イベントキューからキーボードやマウスの動きを取得
+            if event.type == pg.QUIT: # 閉じるボタンが押されたら終了
+                return 
+        if bird.rct.colliderect(bomb.rct): # 爆弾に触れたら終了
+            return 
         pg.display.update()
         clock.tick(1000)
 
