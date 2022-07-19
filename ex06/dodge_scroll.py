@@ -61,15 +61,15 @@ def main():
     clock = pg.time.Clock()     
     screen=Screen("逃げろ！こうかとん",(1600, 900),"ex04/bg_sabaku.jpg")
     bird=Bird("ex03/fig/8.png",2.0,(200,600))
-    trap=Trap("data\サボテンver01.png",2.0,(1600,600),6)
+    trap=Trap("data\サボテンver01.png",2.0,(1600,600),6) # 速度6
 
     while True:
         screen.blit()
         bird.update(screen)
         trap.update(screen)
 
-        if trap.rct.x <  -1 * random.randint(100,400):
-            trap.rct.x = screen.rct.width + trap.rct.width
+        if trap.rct.x <  -1 * random.randint(100,400): #障害物x座標ランダム-400~-100で
+            trap.rct.x = screen.rct.width + trap.rct.width #右端に移動
         for event in pg.event.get(): # イベントキューからキーボードやマウスの動きを取得
             if event.type == pg.QUIT: # 閉じるボタンが押されたら終了
                 return 
