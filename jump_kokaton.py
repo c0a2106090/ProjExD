@@ -119,6 +119,7 @@ def main():
 
         tori.update(sc)
         obs.update(sc)
+        #時間経過で2つの障害物を追加
         if dif >= 5:
             obs2.update(sc)
         if dif >= 10:
@@ -167,7 +168,8 @@ def quit():
 
 #障害物が画面外に出たときに再配置する
 def respawn(obs: Obstacle, height: tuple, screen: Screen):
-    if obs.rect.x <  -1 * random.randint(obs.rect.width, obs.rect.width * 5):
+    #再配置を行うx座標にランダム性を持たせることで不規則に障害物を流す
+    if obs.rect.x <  -1 * random.randint(obs.rect.width, obs.rect.width * 5): 
             obs.rect.x = screen.rect.width + obs.rect.width
             obs.rect.y = screen.rect.height - obs.rect.height - random.randint(height[0], height[1])
 
