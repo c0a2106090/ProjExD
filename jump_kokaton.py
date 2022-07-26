@@ -14,32 +14,34 @@ class Screen:
         self.bg_sfc = pg.image.load(img).convert()
         self.bg_x = 0
 
-#C0A21022
+#<C0A21022>
+    #ゲームオーバー表示
     def game_over_screen(self, dif):
         font = pg.font.Font(None, 150)
         txt = font.render("GameOver", True, (255, 0, 0))
-        self.sfc.blit(txt, (540, 350))
+        self.text(txt, (540, 350))
         font = pg.font.Font(None, 40)
         txt = font.render("Press R KEY TO RESTART", True, (0, 0, 0))
-        self.sfc.blit(txt, (640, 650))
+        self.text(txt, (640, 650))
         font = pg.font.Font(None, 40)
         txt = font.render("Press Esc KEY TO CLOSE", True, (0, 0, 0))
-        self.sfc.blit(txt, (640, 700))
+        self.text(txt, (640, 700))
         font = pg.font.Font(None, 100)
         text = font.render("SCORE: " + str(dif),True,(64,155,63))
-        self.sfc.blit(text, (560, 500))
+        self.text(text, (560, 500))
         pg.display.update()
-#C0A21022
+#</C0A21022>
 
     def blit(self):
-        #背景を動かして描画する
+        #背景を動かして描画
         self.sfc.blit(self.bg_sfc, [self.bg_x - self.rect.width, 0])
         self.sfc.blit(self.bg_sfc, [self.bg_x, 0])
         self.bg_x = (self.bg_x - 5) % self.rect.width
-#C0B21180
-    def text(self,text):
-        self.sfc.blit(text,[10,5])
-#C0B21180
+#<C0B21180>
+    def text(self,text, p: tuple):
+        self.sfc.blit(text,[p[0], p[1]])
+#</C0B21180>
+
 
 #こうかとん用クラス
 class Bird:
@@ -54,6 +56,7 @@ class Bird:
         screen.sfc.blit(self.sfc, self.rect)
 
     def update(self, screen: Screen):
+        #スペースキーを押した時にジャンプする部分
         key = pg.key.get_pressed()
         if self.rect.y >= 750:
             self.rect.y = 750
@@ -94,17 +97,15 @@ def main():
     sc = Screen("飛べ！こうかとん", (1600, 900), "ex04/bg_sabaku.jpg")
     tori = Bird("ex03/fig/8.png ", 2.0, sc)
 
-#C0A21006
+#<C0A21006>
     obs = Obstacle("data\サボテンver01.png", 4.0, 10, (0, 0), sc)
     obs2 = Obstacle("data\サボテンver02.png", 2.0, 12, (0, 0), sc)
     obs_tori = Obstacle("data\鳥ver01.png", 2.0, 8, (50, 200), sc)
-#C0A21006
+#</C0A21006>
 
-
-#C0B21180
+#<C0B21180>
     start = time.time()
-    font = pg.font.Font(None,100)
-#C0B21180
+#</C0B21180>
 
     #描画
     while True:
@@ -131,37 +132,38 @@ def main():
         respawn(obs2, (0, 0), sc)
         respawn(obs_tori, (50, 200), sc)
 
-#C0B21180
-        end = end = time.time()
+#<C0B21180>
+        end = time.time()
         dif = end - start 
         dif = math.floor(dif)
+        font = pg.font.Font(None,100)
         text = font.render(str(dif),True,(64,255,63))
-        sc.text(text)
-#C0B21180
+        sc.text(text, (10,5))
+#</C0B21180>
 
         pg.display.update()
         clock.tick(120)
 
+#衝突処理
 def collision(tori, obs, screen: Screen):
     if tori.colliderect(obs):
         screen.game_over_screen(dif)
-        Quit()
+        quit()
 
-#C0A21060
-def Quit():
+#<C0A21060>
+#衝突後のリスタート等の処理
+def quit():
     END_flg=True
     while END_flg==True:
         for event in pg.event.get():
-            if event.type == pg.QUIT:
-                END_flg = False
-            if pg.key.get_pressed()[pg.K_ESCAPE]:
+            if event.type == pg.QUIT or pg.key.get_pressed()[pg.K_ESCAPE]:
                 END_flg = False
             elif pg.key.get_pressed()[pg.K_r]:
                 END_flg = False
                 main()
     pg.quit()
     sys.exit()
-#C0A21060
+#</C0A21060>
 
 #障害物が画面外に出たときに再配置する
 def respawn(obs: Obstacle, height: tuple, screen: Screen):
